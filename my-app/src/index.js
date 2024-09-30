@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
+import './main.css';
+import './menuBar.css';
+import './globalStyles.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 const MenuBar = () => {

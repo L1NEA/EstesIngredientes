@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #FBA95E;
+    --hover-color: rgb(190, 51, 0);
+    --text-color: rgb(29, 29, 29);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
