@@ -25,7 +25,7 @@ const Box = () => {
           </div>
         </div>
       </div>
-      <div className="logo">
+      <div className="logo1">
         <img src="usjt.jpg" alt="São Judas Logo" />
       </div>
     </div>
