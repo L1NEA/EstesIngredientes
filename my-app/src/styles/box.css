@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #000;
+}
+
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.box {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.box img {
+    max-width: 94%;
+    max-height: 100%;
+}
+
+.titulo {
+    color: black;
+    font-size: 18px;
+}
+
+.logo {
+    margin-top: 20px;
+}
