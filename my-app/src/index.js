@@ -9,7 +9,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 // Importação das outras funções.
 import Main from './scripts/main.js'
 import MenuBar from './scripts/menuBar.js'
-import Box from './scripts/box.js'
 
 // Função principal.
 const App = () => {
@@ -20,9 +19,6 @@ const App = () => {
       </div>
       <div>
         <Main />
-      </div>
-      <div>
-        <Box />
       </div>
     </div>
   );
