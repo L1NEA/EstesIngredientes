@@ -1,5 +1,6 @@
 //Função principal do Estes Ingredientes.
 import '../styles/main.css';
+import Box from './box.js';
 import Receita from './receita.js';
 
 const Main = () => {
@@ -17,6 +18,7 @@ const Main = () => {
         </div>
       </section>
       <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="../../ExemploImagemReceita.jpg"/>
+      <Box />
     </div>
   );
 };

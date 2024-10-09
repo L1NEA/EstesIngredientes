@@ -1,10 +1,11 @@
 import React from 'react';
 import '../styles/box.css';
+import '../styles/main.css';
 
 const Box = () => {
   return (
-    <div>
-      <h2>Este site foi projetado utilizando os seguintes recursos:</h2>
+    <div className='container'>
+      <h2 className='sectionTitle'>Este site foi projetado utilizando os seguintes recursos:</h2>
       <div className="container1">
         <div className="box">
           <div>

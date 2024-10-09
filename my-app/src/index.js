@@ -21,9 +21,6 @@ const App = () => {
       <div>
         <Main />
       </div>
-      <div>
-        <Box />
-      </div>
     </div>
   );
 };
