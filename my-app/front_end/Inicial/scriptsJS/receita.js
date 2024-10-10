@@ -1,6 +1,6 @@
 // Função geradora de Receita
 import PegaIngredientes from './recipeScripts/getIngredients.js'
-import GetRecipe from '../../../back/jsonExample.json';
+import GetRecipe from '../../../src/back/jsonExample.json';
 
 const Receita = (props) => {
     return (
