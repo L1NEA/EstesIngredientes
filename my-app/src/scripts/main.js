@@ -17,7 +17,7 @@ const Main = () => {
           <button id="gerar-receita">Gerar receita</button>
         </div>
       </section>
-      <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="../../ExemploImagemReceita.jpg"/>
+      <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="ExemploImagemReceita.jpg"/>
       <Box />
     </div>
   );

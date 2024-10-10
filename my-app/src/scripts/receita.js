@@ -1,3 +1,7 @@
+// Função geradora de Receita
+import PegaIngredientes from './recipeScripts/getIngredients.js'
+import GetRecipe from '../private/jsonExample.json'
+
 const Receita = (props) => {
     return (
         <section class="recipe-section">
@@ -9,9 +13,28 @@ const Receita = (props) => {
                     <div class="ingredientes">
                     <h3>Ingredientes</h3>
                     <ul>
-                        <li>$Quantidade do 1 Ingrediente</li>
-                        <li>$Quantidade do 2 Ingrediente</li>
-                        <li>$Quantidade do 3 Ingrediente</li>
+                        {/* Criar um loop que identifica quantos ingredientes o ChatGPT usou e criar um <li> para cada um dos ingredientes
+                        </li> Contar do arquivo /private/jsonExample.txt a quantidade de objetos dentro do array "Ingredientes"
+                        # Importa o arquivo .json e alguma variavel de ambiente. 
+                        for(i = Ingredientes.count; i > 0; i--){
+                             <li> 
+                        }
+                        */}
+                        {
+                            {(() => {
+                                const listaIngredientes = [];
+                                for (let i = 0; i < ingredientesCount; i++) {
+                                    listaIngredientes.push(
+                                        <li key={i}>
+                                            {GetRecipe.Ingredientes[i].ingrediente} - {GetRecipe.Ingredientes[i].quantidade}
+                                        </li>
+                                    );
+                                }
+                                return listaIngredientes;
+                            })()}
+                        }
+                        <PegaIngredientes quantidade="20g" ingrediente="farinha"/>
+                        <PegaIngredientes quantidade="2 unidades" ingrediente="ovos"/>
                     </ul>
                     </div>
                     <div class="passo-a-passo">
