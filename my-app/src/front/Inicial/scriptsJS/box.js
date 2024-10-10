@@ -1,6 +1,5 @@
 import React from 'react';
-import '../styles/box.css';
-import '../styles/main.css';
+import '../stylesCSS/box.css';
 
 const Box = () => {
   return (

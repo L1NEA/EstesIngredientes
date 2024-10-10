@@ -1,5 +1,5 @@
 //Função da barra de menu.
-import '../styles/menuBar.css';
+import '../stylesCSS/menuBar.css';
 
 const MenuBar = () => {
     const menu1 = "Gerar Receita"

@@ -1,6 +1,6 @@
 // Função geradora de Receita
 import PegaIngredientes from './recipeScripts/getIngredients.js'
-import GetRecipe from '../private/jsonExample.json'
+import GetRecipe from '../../../back/jsonExample.json';
 
 const Receita = (props) => {
     return (
@@ -17,7 +17,7 @@ const Receita = (props) => {
                         </li> Contar do arquivo /private/jsonExample.txt a quantidade de objetos dentro do array "Ingredientes"
                         # Importa o arquivo .json e alguma variavel de ambiente. 
                         for(i = Ingredientes.count; i > 0; i--){
-                             <li> 
+                        <li> 
                         }
                         */}
                         {/*
