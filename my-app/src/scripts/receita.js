@@ -20,7 +20,7 @@ const Receita = (props) => {
                              <li> 
                         }
                         */}
-                        {
+                        {/*
                             {(() => {
                                 const listaIngredientes = [];
                                 for (let i = 0; i < ingredientesCount; i++) {
@@ -31,7 +31,7 @@ const Receita = (props) => {
                                     );
                                 }
                                 return listaIngredientes;
-                            })()}
+                            })()}*/
                         }
                         <PegaIngredientes quantidade="20g" ingrediente="farinha"/>
                         <PegaIngredientes quantidade="2 unidades" ingrediente="ovos"/>
