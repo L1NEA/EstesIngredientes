@@ -1,0 +1,39 @@
+h2 .sectionTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.container1 {
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.box {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.box img {
+    max-width: 94%;
+    max-height: 100%;
+}
+
+.titulo {
+    color: black;
+    font-size: 18px;
+}
+
+.logo1 {
+    margin-top: 20px;
+}

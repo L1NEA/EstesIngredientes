@@ -1,0 +1,75 @@
+{
+  "Título da Receita": "Receita de Omelete Simples",
+  "Ingredientes": [
+    {
+      "ingrediente": "Ovos",
+      "quantidade": "3 unidades"
+    },
+    {
+      "ingrediente": "Leite",
+      "quantidade": "50 ml"
+    },
+    {
+      "ingrediente": "Sal",
+      "quantidade": "a gosto"
+    },
+    {
+      "ingrediente": "Pimenta-do-reino",
+      "quantidade": "a gosto"
+    },
+    {
+      "ingrediente": "Manteiga",
+      "quantidade": "1 colher de sopa"
+    }
+  ],
+  "Modo de Preparo": [
+    {
+      "passo": {
+        "Ingrediente": "Ovos",
+        "execucao": "Quebre os ovos em uma tigela e bata bem com um garfo ou batedor."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Leite",
+        "execucao": "Adicione o leite aos ovos batidos e misture até obter uma mistura homogênea."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Sal",
+        "execucao": "Tempere a mistura com sal a gosto."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Pimenta-do-reino",
+        "execucao": "Adicione pimenta-do-reino a gosto para dar sabor."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Manteiga",
+        "execucao": "Aqueça uma frigideira com a manteiga até derreter e espalhar uniformemente."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Mistura de Ovos",
+        "execucao": "Despeje a mistura de ovos na frigideira quente e cozinhe em fogo médio até que as bordas comecem a firmar."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Omelete",
+        "execucao": "Com a ajuda de uma espátula, dobre a omelete ao meio e cozinhe por mais alguns minutos até que esteja completamente cozida."
+      }
+    },
+    {
+      "passo": {
+        "Ingrediente": "Omelete Pronta",
+        "execucao": "Retire a omelete da frigideira e sirva quente."
+      }
+    }
+  ]
+}

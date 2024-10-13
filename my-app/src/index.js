@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Importação de arquivos de estilo.   
-import './styles/globalStyles.css';
+import './front/globalStyles.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 // Importação das outras funções.
-import Main from './scripts/main.js'
-import MenuBar from './scripts/menuBar.js'
-import Box from './scripts/box.js'
+import Main from './front/Inicial/scriptsJS/main.js'
+import MenuBar from './front/Inicial/scriptsJS/menuBar.js'
+
 
 // Função principal.
 const App = () => {
@@ -20,9 +20,6 @@ const App = () => {
       </div>
       <div>
         <Main />
-      </div>
-      <div>
-        <Box />
       </div>
     </div>
   );
