@@ -10,6 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import Main from './front/Inicial/scriptsJS/main.js'
 import MenuBar from './front/Inicial/scriptsJS/menuBar.js'
 
+import Box from './front/Inicial/scriptsJS/box.js'
 
 // Função principal.
 const App = () => {

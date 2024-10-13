@@ -3,7 +3,6 @@ import '../stylesCSS/main.css';
 import Box from './box.js';
 import Receita from './receita.js';
 
-
 const Main = () => {
   return (
     <div class="container">
