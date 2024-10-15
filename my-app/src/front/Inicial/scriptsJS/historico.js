@@ -1,12 +1,12 @@
 import React from 'react';
-import './historico.css';
-import MenuBar from './front/Inicial/scriptsJS/menuBar.js'
+import '../stylesCSS/historico.css';
+import MenuBar from './menuBar.js'
 
 
 function Historico() {
   return (
     
-    <div className="App">
+    <div className="bodyhist">
       <MenuBar />
       <div className="recipe">
         <h4>Nome da Receita 1</h4>

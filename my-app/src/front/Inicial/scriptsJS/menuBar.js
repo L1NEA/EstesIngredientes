@@ -1,5 +1,8 @@
 //Função da barra de menu.
+import React from 'react';
+import { Link } from 'react-router-dom'
 import '../stylesCSS/menuBar.css';
+
 
 const MenuBar = () => {
     const menu1 = "Gerar Receita"
@@ -9,10 +12,6 @@ const MenuBar = () => {
     const handleMenuClick = (path) => {
       window.location.href = path;
   };
-
-
-    const menu2 = "Meu histórico de receitas"
-    const menu3 = "Todas as receitas"
   
     return (
       <header>
@@ -25,9 +24,8 @@ const MenuBar = () => {
                 </a>
               </div>
             </li>
-            <li className="link"><a href="#">{menu1}</a></li>
-            <li className="link"><a href="#">{menu2}</a></li>
-            <li className="link"><a href="#">{menu3}</a></li>
+            <li className="link"><Link to="/">{menu1}</Link></li>
+            <li className="link"><Link to="/todas-as-receitas">{menu2}</Link></li>
           </ul>
         </nav>
       </header>
