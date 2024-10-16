@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import '../stylesCSS/menuBar.css';
+import '../stylesCSS/historico.css';
 
 
 const MenuBar = () => {

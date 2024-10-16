@@ -3,7 +3,7 @@ import '../stylesCSS/box.css';
 
 const Box = () => {
   return (
-    <div className='container'>
+    <div className='container-resources'>
       <h2 className='sectionTitle'>Este site foi projetado utilizando os seguintes recursos:</h2>
       <div className="container1">
         <div className="box">

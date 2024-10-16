@@ -4,6 +4,10 @@ h2 .sectionTitle {
     margin-bottom: 20px;
 }
 
+.container-resources {
+    margin-top: 100px;
+}
+
 .container1 {
     display: flex;
     margin-top: 30px;
@@ -15,12 +19,12 @@ h2 .sectionTitle {
 .box {
     border: 1px solid #ccc;
     border-radius: 20px;
-    width: 200px;
-    height: 200px;
+    height: auto; width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 20px;
+    padding: 30px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
 

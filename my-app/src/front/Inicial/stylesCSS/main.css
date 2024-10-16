@@ -6,6 +6,7 @@
     text-align: center;
     padding: 20px;
     margin-top: 60px;
+    margin-left: auto; margin-right: auto;
 }
 
 .image-main {
@@ -93,6 +94,16 @@ button {
     margin-bottom: 5px;
 }
 
+/* Define a animação de rotação */
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 .reset-btn {
     background: none;
     border: none;
@@ -104,8 +115,9 @@ button {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    transition: transform 0.5s ease-in-out; /* To smooth the transition */
 }
 
 .reset-btn:hover {
-    font-size: 2.75em;
+    animation: rotate 0.5s ease-in-out; /* Use the rotate animation */
 }
