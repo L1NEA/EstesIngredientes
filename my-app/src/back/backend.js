@@ -7,8 +7,8 @@ app.use(express.json())
 
 // RECEBIMENTO DE REQUISIÇÃO
 app.get('/hello-world', (req, res) => {
-    res.json({mensagem: 'Olá Mundo!!!, $(req.query.nome)'})
+    res.json({mensagem: `Olá Mundo!!!, ${req.query.nome}`})
 })
 
 // Escuta ativa de requisições na porta :3000
-app.listen(3000, () => {console.log("Serviço correndo.")})
+app.listen(3000, () => {console.log("Serviço correndo na porta localhost:3000")})
