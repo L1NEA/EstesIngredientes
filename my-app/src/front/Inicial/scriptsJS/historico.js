@@ -1,25 +1,40 @@
 import React from 'react';
 import '../stylesCSS/historico.css';
+import Recipe from './recipehistoria';
 
 function Historico() {
+  const recipes = [
+    {
+      name: 'Nome da Receita 1',
+      image: 'bolo.jpg',
+      ingredients: 'Lista de ingredientes 1',
+      steps: 'Instruções passo a passo 1',
+    },
+    {
+      name: 'Nome da Receita 2',
+      image: 'bolo2.jpg',
+      ingredients: 'Lista de ingredientes 2',
+      steps: 'Instruções passo a passo 2',
+    },
+    {
+      name: 'Nome da Receita 3',
+      image: 'bolo3.jpg',
+      ingredients: 'Lista de ingredientes 3',
+      steps: 'Instruções passo a passo 3',
+    },
+  ];
+
   return (
     <div className="bodyhist">
-      <div className="recipe">
-        <h4>Nome da Receita</h4>
-        <div className="content">
-          <img src="bolo.jpg" alt="Imagem da Receita 1" />
-          <div className="details">
-            <div className="ingredients">
-              <h5>Ingredientes</h5>
-              <p>Lista de ingredientes</p>
-            </div>
-            <div className="steps">
-              <h5>Passo a Passo</h5>
-              <p>Instruções passo a passo</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {recipes.map((recipe, index) => (
+        <Recipe
+          key={index}
+          name={recipe.name}
+          image={recipe.image}
+          ingredients={recipe.ingredients}
+          steps={recipe.steps}
+        />
+      ))}
     </div>
   );
 }
