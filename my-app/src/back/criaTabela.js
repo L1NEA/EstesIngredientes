@@ -1,8 +1,8 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
-// funcao para conectar ao MySQL e criar uma tabela
-async function connectAndCreateTable() {
+// Função para conectar ao MySQL e criar uma tabela
+async function connectAndCreateTableLogs() {
   // Configurações de conexão com o banco de dados
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -21,8 +21,9 @@ async function connectAndCreateTable() {
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS logs (
         id BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
-        comando LONGTEXT NOT NULL COLLATE 'utf8mb4_uca1400_ai_ci',
-        retorno LONGTEXT NOT NULL COLLATE 'utf8mb4_uca1400_ai_ci',
+        endpoint VARCHAR(255) NOT NULL,
+        status INT NOT NULL,
+        erro TEXT,
         criadoEm TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
@@ -32,14 +33,14 @@ async function connectAndCreateTable() {
       } else {
         console.log('Tabela criada ou já existe:', results);
       }
-      // Fechar a conexao
+      // Fechar a conexão
       connection.end();
     });
   });
 }
 
-// Funcao para inserir dados na tabela
-async function insertLog(comando, retorno) {
+// Função para inserir dados na tabela
+async function insertLog(endpoint, status, erro = null) {
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -52,8 +53,8 @@ async function insertLog(comando, retorno) {
       return console.error('Erro ao conectar: ' + err.stack);
     }
 
-    const insertQuery = 'INSERT INTO logs (comando, retorno) VALUES (?, ?)';
-    connection.query(insertQuery, [comando, retorno], (err, results) => {
+    const insertQuery = 'INSERT INTO logs (endpoint, status, erro) VALUES (?, ?, ?)';
+    connection.query(insertQuery, [endpoint, status, erro], (err, results) => {
       if (err) {
         console.error('Erro ao inserir dados: ' + err.message);
       } else {
@@ -67,33 +68,33 @@ async function insertLog(comando, retorno) {
 // Função para selecionar dados da tabela
 async function selectLogs() {
   return new Promise((resolve, reject) => {
-      const connection = mysql.createConnection({
-          host: process.env.DB_HOST,
-          user: process.env.DB_USER,
-          password: process.env.DB_PASSWORD,
-          database: process.env.DB_NAME
-      });
+    const connection = mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
+    });
 
-      connection.connect((err) => {
-          if (err) {
-              return reject('Erro ao conectar: ' + err.stack);
-          }
+    connection.connect((err) => {
+      if (err) {
+        return reject('Erro ao conectar: ' + err.stack);
+      }
 
-          const selectQuery = 'SELECT * FROM logs';
-          connection.query(selectQuery, (err, results) => {
-              if (err) {
-                  reject('Erro ao selecionar dados: ' + err.message);
-              } else {
-                  resolve(results);
-              }
-              connection.end();
-          });
+      const selectQuery = 'SELECT * FROM logs';
+      connection.query(selectQuery, (err, results) => {
+        if (err) {
+          reject('Erro ao selecionar dados: ' + err.message);
+        } else {
+          resolve(results);
+        }
+        connection.end();
       });
+    });
   });
 }
 
 module.exports = {
-  connectAndCreateTable,
+  connectAndCreateTableLogs,
   insertLog,
   selectLogs
 };
