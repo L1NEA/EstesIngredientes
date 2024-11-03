@@ -64,28 +64,36 @@ async function insertLog(comando, retorno) {
   });
 }
 
-// Funcao para selecionar dados da tabela
+// Função para selecionar dados da tabela
 async function selectLogs() {
-  const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-  });
+  return new Promise((resolve, reject) => {
+      const connection = mysql.createConnection({
+          host: process.env.DB_HOST,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          database: process.env.DB_NAME
+      });
 
-  connection.connect((err) => {
-    if (err) {
-      return console.error('Erro ao conectar: ' + err.stack);
-    }
+      connection.connect((err) => {
+          if (err) {
+              return reject('Erro ao conectar: ' + err.stack);
+          }
 
-    const selectQuery = 'SELECT * FROM logs';
-    connection.query(selectQuery, (err, results) => {
-      if (err) {
-        console.error('Erro ao selecionar dados: ' + err.message);
-      } else {
-        console.log('Dados selecionados:', results);
-      }
-      connection.end();
-    });
+          const selectQuery = 'SELECT * FROM logs';
+          connection.query(selectQuery, (err, results) => {
+              if (err) {
+                  reject('Erro ao selecionar dados: ' + err.message);
+              } else {
+                  resolve(results);
+              }
+              connection.end();
+          });
+      });
   });
 }
+
+module.exports = {
+  connectAndCreateTable,
+  insertLog,
+  selectLogs
+};
