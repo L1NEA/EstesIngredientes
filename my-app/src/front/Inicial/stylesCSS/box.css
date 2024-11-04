@@ -9,23 +9,27 @@ h2 .sectionTitle {
 }
 
 .container1 {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automaticamente a quantidade de colunas */
+    gap: 20px; /* Espaço entre os elementos */
     margin-top: 30px;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap
+    padding: 0 20px;
 }
 
 .box {
     border: 1px solid #ccc;
     border-radius: 20px;
-    height: auto; width: 200px;
+    width: 100%; /* Ajusta automaticamente ao grid */
+    max-width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
     padding: 30px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    box-sizing: border-box;
 }
 
 .box img {
@@ -36,8 +40,27 @@ h2 .sectionTitle {
 .titulo {
     color: black;
     font-size: 18px;
+    text-align: center;
 }
 
 .logo1 {
     margin-top: 20px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container1 {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .box {
+        padding: 20px; /* Reduz o padding em telas menores */
+        max-width: 100%; /* Permite que a box ocupe toda a largura */
+    }
+
+    .titulo {
+        font-size: 16px;
+    }
 }

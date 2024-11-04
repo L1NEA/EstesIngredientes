@@ -1,52 +1,79 @@
 .menuBar {
     background-color: var(--primary-color);
     height: 60px;
-    padding: 0;
+    padding: 0 20px;
     position: fixed;
-    z-index: 1000; /* Para o menu sempre ficar a frente do conteúdo da página */
+    z-index: 1000;
     top: 0;
     left: 0;
-    border-end-end-radius: 15px;
-    border-end-start-radius: 15px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    padding: 0 20px;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Colunas para logo e navegação */
+    align-items: center;
+    border-end-end-radius: 15px;
+    border-end-start-radius: 15px;
+    box-sizing: border-box;
 }
 
-.menuBar .logo{
-    margin-right: 40px
+.menuBar .logo {
+    margin-right: 20px;
 }
 
-.menuBar ul{
+.menuBar ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    gap: 20px; /* Espaçamento entre os links */
 }
 
 .menuBar ul li.link {
-    margin: 0 30px; /* Espaçamento entre os links */
+    margin: 0; /* Remove a margem fixa para o uso de gap no grid */
 }
 
 .menuBar li a {
-    text-decoration: none; /* Remove o sublinhado */
+    text-decoration: none;
     color: var(--text-color);
     font-size: 16px;
     transition: color 0.2s ease;
-    font-weight: bold
+    font-weight: bold;
 }
 
 /* Efeito ao passar o mouse sobre os links */
 .menuBar li a:hover {
-    color: var(--hover-color)
+    color: var(--hover-color);
 }
 
 /* Estilo específico para a logo no menuBar */
 .menuBar img {
     height: 50px;
     width: auto;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .menuBar {
+        grid-template-columns: 1fr; /* Muda para uma coluna em telas menores */
+        justify-content: center;
+        padding: 0 15px;
+        height: auto; /* Permite altura variável se necessário */
+        text-align: center;
+    }
+
+    .menuBar .logo {
+        margin: 0 auto 10px;
+    }
+
+    .menuBar ul {
+        flex-direction: column; /* Links em coluna */
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .menuBar li a {
+        font-size: 14px; /* Reduz o tamanho da fonte para otimizar o espaço */
+    }
 }

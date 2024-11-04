@@ -1,21 +1,26 @@
 .container {
+    display: grid;
+    grid-template-columns: 1fr; /* Inicia com uma coluna */
     justify-content: center;
     align-items: center;
-    height: 130vh;
+    height: auto;
     max-width: 800px;
     text-align: center;
     padding: 20px;
     margin-top: 60px;
-    margin-left: auto; margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .image-main {
-    width: 40%;
-    margin-bottom: 20px;
+    width: 100%; /* Ajusta a largura para se adaptar ao grid */
+    max-width: 300px;
+    margin: 0 auto 20px;
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -25,6 +30,9 @@ header h1 {
 }
 
 .prompt-section {
+    display: grid;
+    grid-template-columns: 1fr; /* Inicia com uma coluna */
+    gap: 15px;
     margin-bottom: 30px;
 }
 
@@ -35,18 +43,20 @@ label {
 }
 
 .input-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto; /* Campo de entrada e botão */
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 
 input[type="text"] {
-    width: 70%;
+    width: 100%;
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
 button {
@@ -74,8 +84,9 @@ button {
 }
 
 .recipe-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Configuração padrão com duas colunas */
+    gap: 20px;
     text-align: left;
     margin-bottom: 30px;
 }
@@ -102,7 +113,7 @@ button {
     to {
       transform: rotate(360deg);
     }
-  }
+}
 
 .reset-btn {
     background: none;
@@ -115,9 +126,37 @@ button {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    transition: transform 0.5s ease-in-out; /* To smooth the transition */
+    transition: transform 0.5s ease-in-out;
 }
 
 .reset-btn:hover {
-    animation: rotate 0.5s ease-in-out; /* Use the rotate animation */
+    animation: rotate 0.5s ease-in-out;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .image-main {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .prompt-section {
+        grid-template-columns: 1fr; /* Coluna única para campo e botão */
+    }
+
+    .recipe-container {
+        grid-template-columns: 1fr; /* Muda para uma coluna em telas menores */
+    }
+    
+    .recipe-section h2 {
+        font-size: 1.4em;
+    }
+
+    .recipe-container h3 {
+        font-size: 1.1em;
+    }
 }
