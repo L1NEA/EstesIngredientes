@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const { connectAndCreateTableLogs, insertLog, selectLogs } = require('./criaTabela');
+const { GoogleGenerativeAI } = require('@google/generative-ai')
 
 // Função middleware
 app.use(express.json());
@@ -35,6 +36,19 @@ app.get('/consultarLogs', async (req, res) => {
     res.status(500).json({ error: 'Erro ao consultar logs' });
   }
 });
+
+//Rota para conversar com o GEMINI
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+
+app.get('/pergunte-ao-gemini', async (req, res) => {
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-1.5-flash'
+  })
+  const { prompt } = req.body
+  const result = await model.generateContent(prompt)
+  res.json({completion: result.response.text()})
+})
 
 // Escuta ativa de requisições na porta :3000
 app.listen(3000, () => {
