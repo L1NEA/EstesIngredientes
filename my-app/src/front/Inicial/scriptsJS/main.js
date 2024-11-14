@@ -28,7 +28,7 @@ const Main = () => {
   const onBuscaRealizada = async () => {
     try {
         // Passando o prompt como parte do corpo da requisição POST
-        const response = await axios.post("/pergunte-ao-gemini", { prompt: promptBusca });
+        const response = await axios.post("http://localhost:3001/pergunte-ao-gemini", { prompt: promptBusca });
         setResultado(response.data.completion); // Atualiza o resultado com a resposta da API
         console.log(response.data.completion); // Imprime a resposta
     } catch (error) {

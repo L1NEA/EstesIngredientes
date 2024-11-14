@@ -7,7 +7,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai')
 const cors = require('cors');
 
 // Função middleware
-const PORT = 3000
+const PORT = 3001
 // Middleware para habilitar CORS
 app.use(cors());
 app.use(express.json());
@@ -56,7 +56,7 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
   res.json({ completion: result.response.text() });
 });
 
-// Escuta ativa de requisições na porta :3000
+// Escuta ativa de requisições na porta :3001
 app.listen(PORT, () => {
   console.log(`Serviço correndo na porta localhost: ${PORT}`);
 });
