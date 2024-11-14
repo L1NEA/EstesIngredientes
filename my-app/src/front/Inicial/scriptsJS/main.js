@@ -6,13 +6,12 @@ import Box from './box.js';
 import Receita from './receita.js';
 
 const Main = () => {
-  const [buscaIngredientes, setbuscaIngredientes] = useState('')
-  const [resultado, setResultado] = useState('')
+  const [buscaIngredientes, setBuscaIngredientes] = useState('')
+  const [resultado, setResultado] = useState(null)
 
   const promptBusca = `Me entregue uma receita que contenha esses ingredientes [${buscaIngredientes}] no formato de JSON abaixo:
   {
     "nome": "",
-    "foto": "",
     "ingredientes": [
       {
         "nome": "",
@@ -27,14 +26,15 @@ const Main = () => {
 
   const onBuscaRealizada = async () => {
     try {
-        // Passando o prompt como parte do corpo da requisição POST
-        const response = await axios.post("http://localhost:3001/pergunte-ao-gemini", { prompt: promptBusca });
-        setResultado(response.data.completion); // Atualiza o resultado com a resposta da API
-        console.log(response.data.completion); // Imprime a resposta
+      // Passando o prompt como parte do corpo da requisição POST
+      const response = await axios.post("http://localhost:3001/pergunte-ao-gemini", { prompt: promptBusca });
+      const completionText = response.data.completion.replace(/```json|```/g, "").trim(); 
+      setResultado(JSON.parse(completionText))// Atualiza o resultado com a resposta da API
+      console.log(JSON.parse(completionText)); // Imprime a resposta
     } catch (error) {
-        console.error("Erro ao obter resposta:", error);
+      console.error("Erro ao obter resposta:", error);
     }
-};
+  };
 
 
   return (
@@ -46,14 +46,20 @@ const Main = () => {
       <section className="prompt-section">
         <p>Insira todos seus ingredientes separados por vírgula.</p>
         <div className="input-container">
-          <input type="text" id="ingredientes" placeholder="Tomate, alho, cebola, farinha" value={buscaIngredientes} onChange={(e) => setbuscaIngredientes(e.target.value)} />
+          <input type="text" id="ingredientes" placeholder="Tomate, alho, cebola, farinha" value={buscaIngredientes} onChange={(e) => setBuscaIngredientes(e.target.value)} />
           <button id="gerar-receita" onClick={onBuscaRealizada}>Gerar receita</button>
         </div>
       </section>
-      <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="ExemploImagemReceita.jpg" />
+      {resultado && (
+        <Receita
+          nomeDaReceita={resultado.nome}
+          fotoDaReceita={resultado.foto}
+          ingredientes={resultado.ingredientes}
+          passos={resultado.passos}
+        />
+      )}
       <Box />
     </div>
-
   );
 };
 
