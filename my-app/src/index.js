@@ -1,6 +1,7 @@
 // Recursos do React e Node.
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Importação de arquivos de estilo.   
@@ -30,7 +31,5 @@ const App = () => {
   );
 };
 
-ReactDOM.render(
-  <App />,
-  document.querySelector('#root')
-);
+const root = ReactDOM.createRoot(document.querySelector('#root'));
+root.render(<App />);

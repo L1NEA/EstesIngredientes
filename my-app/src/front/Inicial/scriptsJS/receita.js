@@ -4,13 +4,13 @@ import GetRecipe from '../../../back/jsonExample.json';
 
 const Receita = (props) => {
     return (
-        <section class="recipe-section">
+        <section className="recipe-section">
             <h2 id="recipe-name">{props.nomeDaReceita}</h2>
                 <div>
-                <img src={props.fotoDaReceita} alt="Foto da Receita" class="image-main"/>
+                <img src={props.fotoDaReceita} alt="Foto da Receita" className="image-main"/>
                 </div>
-                <div class="recipe-container">
-                    <div class="ingredientes">
+                <div className="recipe-container">
+                    <div className="ingredientes">
                     <h3>Ingredientes</h3>
                     <ul>
                         {/* Criar um loop que identifica quantos ingredientes o ChatGPT usou e criar um <li> para cada um dos ingredientes
@@ -37,7 +37,7 @@ const Receita = (props) => {
                         <PegaIngredientes quantidade="2 unidades" ingrediente="ovos"/>
                     </ul>
                     </div>
-                    <div class="passo-a-passo">
+                    <div className="passo-a-passo">
                     <h3>Modo de Preparo</h3>
                     <ul>
                         <li>$1 Passo</li>
@@ -46,7 +46,7 @@ const Receita = (props) => {
                     </ul>
                     </div>
                 </div>
-            <button id="reset-receita" class="reset-btn"><i class="fa-solid fa-arrows-rotate"></i></button>
+            <button id="reset-receita" className="reset-btn"><i className="fa-solid fa-arrows-rotate"></i></button>
         </section>
     )
 }

@@ -1,26 +1,59 @@
 //Função principal do Estes Ingredientes.
+import React, { useState } from 'react';
+import axios from 'axios';
 import '../stylesCSS/main.css';
 import Box from './box.js';
 import Receita from './receita.js';
 
 const Main = () => {
+  const [buscaIngredientes, setbuscaIngredientes] = useState('')
+  const [resultado, setResultado] = useState('')
+
+  const promptBusca = `Me entregue uma receita que contenha esses ingredientes [${buscaIngredientes}] no formato de JSON abaixo:
+  {
+    "nome": "",
+    "foto": "",
+    "ingredientes": [
+      {
+        "nome": "",
+        "quantidade": ""
+      }
+    ],
+    "passos": [
+      ""
+    ]
+  }
+  Atente-se em deixar a lista de passos em ordem de execução`
+
+  const onBuscaRealizada = async () => {
+    try {
+        // Passando o prompt como parte do corpo da requisição POST
+        const response = await axios.post("/pergunte-ao-gemini", { prompt: promptBusca });
+        setResultado(response.data.completion); // Atualiza o resultado com a resposta da API
+        console.log(response.data.completion); // Imprime a resposta
+    } catch (error) {
+        console.error("Erro ao obter resposta:", error);
+    }
+};
+
+
   return (
-    <div class="container">
-      <section class="fixed-container">
-        <img src="Logo.png" alt="Logo Chef Robô" class="image-main" />
+    <div className="container">
+      <section className="fixed-container">
+        <img src="Logo.png" alt="Logo Chef Robô" className="image-main" />
         <h1>Os ingredientes que você tem, transformados em receitas deliciosas em segundos!</h1>
       </section>
-      <section class="prompt-section">
-        <label for="ingredientes">Insira todos seus ingredientes separados por vírgula.</label>
-        <div class="input-container">
-          <input type="text" id="ingredientes" placeholder="Exemplo: tomate, alho, cebola" />
-          <button id="gerar-receita">Gerar receita</button>
+      <section className="prompt-section">
+        <p>Insira todos seus ingredientes separados por vírgula.</p>
+        <div className="input-container">
+          <input type="text" id="ingredientes" placeholder="Tomate, alho, cebola, farinha" value={buscaIngredientes} onChange={(e) => setbuscaIngredientes(e.target.value)} />
+          <button id="gerar-receita" onClick={onBuscaRealizada}>Gerar receita</button>
         </div>
       </section>
-      <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="ExemploImagemReceita.jpg"/>
+      <Receita nomeDaReceita="Bolo de Chocolate" fotoDaReceita="ExemploImagemReceita.jpg" />
       <Box />
     </div>
-    
+
   );
 };
 
