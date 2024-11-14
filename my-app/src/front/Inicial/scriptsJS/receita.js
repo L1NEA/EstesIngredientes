@@ -7,7 +7,7 @@ const Receita = ({ nomeDaReceita, fotoDaReceita, ingredientes, passos }) => {
             <div className="recipe-container">
                 <div className="ingredientes">
                     <h3>Ingredientes</h3>
-                    <ul>
+                    <ul style={{ listStyleType: 'circle', lineHeight: '150%'  }}>
                         {ingredientes && ingredientes.map((item, index) => (
                             <PegaIngredientes
                                 key={index}
@@ -19,7 +19,7 @@ const Receita = ({ nomeDaReceita, fotoDaReceita, ingredientes, passos }) => {
                 </div>
                 <div className="passo-a-passo">
                     <h3>Modo de Preparo</h3>
-                    <ul>
+                    <ul style={{ listStyleType: 'square', lineHeight: '150%' }}>
                         {passos && passos.map((passo, index) => (
                             <li key={index}>{passo}</li>
                         ))}
