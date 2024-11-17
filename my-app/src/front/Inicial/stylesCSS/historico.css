@@ -23,17 +23,9 @@
 
 .content {
     display: grid;
-    grid-template-columns: 1fr 3fr; /* Configuração padrão */
     gap: 20px;
     align-items: start;
     padding-top: 20px;
-}
-
-.recipe img {
-    width: 100%;
-    height: auto;
-    border-right: 1px solid #ccc;
-    border-radius: 10px;
 }
 
 .details {
@@ -71,10 +63,5 @@ h5 {
     .bodyhist {
         padding-left: 20px;
         padding-right: 20px;
-    }
-
-    .recipe img {
-        margin: 0 auto 15px;
-        width: 80%;
     }
 }

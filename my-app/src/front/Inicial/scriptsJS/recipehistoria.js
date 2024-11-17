@@ -6,7 +6,6 @@ function Recipe({ name, image, ingredients, steps }) {
     <div className="recipe">
       <h4>{name}</h4>
       <div className="content">
-        <img src={image} alt={`Imagem da ${name}`} />
         <div className="details">
           <div className="ingredients">
             <h5>Ingredientes</h5>
