@@ -2,8 +2,8 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const { connectAndCreateTableLogs, insertLog, selectLogs } = require('./criaTabela');
-const { GoogleGenerativeAI } = require('@google/generative-ai')
+const { connectAndCreateTableLogs, insertLog, selectLogs, salvarReceitaNoBanco } = require('./criaTabela');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 const cors = require('cors');
 
 // Função middleware
@@ -27,7 +27,7 @@ app.use(async (req, res, next) => {
 });
 
 // RECEBIMENTO DE REQUISIÇÃO
-app.get('/hello-world', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ mensagem: `Olá Mundo!!!, ${req.query.nome}` });
 });
 
@@ -38,6 +38,16 @@ app.get('/consultarLogs', async (req, res) => {
     res.json(logs);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao consultar logs' });
+  }
+});
+
+// Rota para consultar receitas
+app.get('/consultarReceitas', async (req, res) => {
+  try {
+    const receitas = await selectReceitas();
+    res.json(receitas);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao consultar receitas' });
   }
 });
 
@@ -53,7 +63,27 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
   console.log('API KEY:', GEMINI_API_KEY)
   console.log('Prompt recebido:', prompt)
   const result = await model.generateContent(prompt);
-  res.json({ completion: result.response.text() });
+  const completionText = result.response.text();
+  console.log('Texto de conclusão:', completionText);
+  
+  // Remover a marcação de código Markdown (caso esteja presente)
+  const jsonString = completionText.replace(/```json|```/g, '').trim();
+
+  // Tentar parsear o JSON
+  let responseJson;
+  try {
+    responseJson = JSON.parse(jsonString); // Convertendo a string para JSON
+  } catch (error) {
+    console.error('Erro ao converter completionText para JSON:', error);
+    return res.status(500).json({ error: 'Erro ao processar a resposta do modelo' });
+  }
+
+  // Agora, salvar esses dados no banco
+  const { nome, ingredientes, passos } = responseJson;
+
+  // Chama a função para salvar os dados da receita no banco
+  salvarReceitaNoBanco(nome, ingredientes, passos);
+  res.json({ completion: completionText });
 });
 
 // Escuta ativa de requisições na porta :3001
