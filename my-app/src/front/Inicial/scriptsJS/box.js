@@ -2,6 +2,8 @@ import React from 'react';
 import '../stylesCSS/box.css';
 
 const Box = () => {
+/* criando um conntainer principal */
+/* e posteriormente a divisão das boxes sobre determinado assunto*/
   return (
     <div className='container-resources'>
       <h2 className='sectionTitle'>Este site foi projetado utilizando os seguintes recursos:</h2>
@@ -15,13 +17,13 @@ const Box = () => {
         <div className="box">
           <div>
             <p className="titulo"><strong>Processamento</strong></p>
-            <img src="gpt.jpg" alt="GPT Logo" />
+            <img src="gemini.jpg" alt="GPT Logo" />
           </div>
         </div>
         <div className="box">
           <div>
             <p className="titulo"><strong>Back-End</strong></p>
-            <img src="mysql.png" alt="MySQL Logo" />
+            <img src="node.png" alt="Node Logo" />
           </div>
         </div>
       </div>

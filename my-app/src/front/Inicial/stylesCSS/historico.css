@@ -1,3 +1,4 @@
+/* formatação */
 .bodyhist {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -10,6 +11,7 @@
     box-sizing: border-box;
 }
 
+/*configurações das boxes*/
 .recipe {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -21,6 +23,7 @@
     box-sizing: border-box;
 }
 
+/* configurações dentro das boxas */
 .content {
     display: grid;
     gap: 20px;
@@ -44,6 +47,7 @@
     text-align: left;
 }
 
+/* titulos das caixas*/
 h4 {
     color: #f88400;
 }

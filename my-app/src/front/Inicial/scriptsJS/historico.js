@@ -38,13 +38,14 @@ function Historico() {
     fetchRecipes();
   }, []);
 
-  // paginação
+  // configuração da paginação
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentRecipes = recipes.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(recipes.length / itemsPerPage);
 
+  // configuração de permisão da paginação
   const goToPreviousPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -53,6 +54,7 @@ function Historico() {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
+  // mensagem de carregamento
   return (
     <div className="bodyhist">
       {loading ? (
