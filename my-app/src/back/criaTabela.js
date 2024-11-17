@@ -93,8 +93,66 @@ async function selectLogs() {
   });
 }
 
+async function salvarReceitaNoBanco(nome, ingredientes, preparo) {
+  const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      return console.error('Erro ao conectar: ' + err.stack);
+    }
+
+    const query = 'INSERT INTO receitas (nome, ingredientes, preparo) VALUES (?, ?, ?)';
+    const ingredientesJson = JSON.stringify(ingredientes);
+    const preparoJson = JSON.stringify(preparo);
+
+    connection.query(query, [nome, ingredientesJson, preparoJson], (err, result) => {
+      if (err) {
+        console.error('Erro ao salvar receita no banco:', err);
+      } else {
+        console.log('Receita salva no banco de dados com sucesso:', result);
+      }
+      connection.end();
+    });
+  });
+}
+
+// Função para selecionar dados da tabela receitas
+async function selectReceitas() {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
+    });
+
+    connection.connect((err) => {
+      if (err) {
+        return reject('Erro ao conectar: ' + err.stack);
+      }
+
+      const selectQuery = 'SELECT * FROM receitas';
+      connection.query(selectQuery, (err, results) => {
+        if (err) {
+          reject('Erro ao selecionar dados: ' + err.message);
+        } else {
+          resolve(results);
+        }
+        connection.end();
+      });
+    });
+  });
+}
+
 module.exports = {
   connectAndCreateTableLogs,
   insertLog,
-  selectLogs
+  selectLogs,
+  salvarReceitaNoBanco,
+  selectReceitas
 };
