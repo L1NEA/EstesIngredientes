@@ -136,7 +136,7 @@ async function selectReceitas() {
         return reject('Erro ao conectar: ' + err.stack);
       }
 
-      const selectQuery = 'SELECT * FROM receitas';
+      const selectQuery = 'SELECT nome, ingredientes, preparo FROM receitas';
       connection.query(selectQuery, (err, results) => {
         if (err) {
           reject('Erro ao selecionar dados: ' + err.message);
