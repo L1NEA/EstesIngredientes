@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const { connectAndCreateTableLogs, insertLog, selectLogs, salvarReceitaNoBanco } = require('./criaTabela');
+const { connectAndCreateTableLogs, insertLog, selectLogs, salvarReceitaNoBanco,  selectReceitas} = require('./criaTabela');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const cors = require('cors');
 
@@ -88,5 +88,5 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
 
 // Escuta ativa de requisições na porta :3001
 app.listen(PORT, () => {
-  console.log(`Serviço correndo na porta localhost: ${PORT}`);
+  console.log(`Serviço correndo na porta localhost: ${PORT}`)
 });

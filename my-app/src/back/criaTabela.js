@@ -6,9 +6,10 @@ async function connectAndCreateTableLogs() {
   // Configurações de conexão com o banco de dados
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT,
   });
 
   // Conectar ao banco de dados
@@ -43,9 +44,10 @@ async function connectAndCreateTableLogs() {
 async function insertLog(endpoint, status, erro = null) {
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT,
   });
 
   connection.connect((err) => {
@@ -96,9 +98,10 @@ async function selectLogs() {
 async function salvarReceitaNoBanco(nome, ingredientes, preparo) {
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT,
   });
 
   connection.connect((err) => {
@@ -128,7 +131,8 @@ async function selectReceitas() {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT,
     });
 
     connection.connect((err) => {
