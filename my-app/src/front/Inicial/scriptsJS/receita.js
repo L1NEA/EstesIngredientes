@@ -26,7 +26,6 @@ const Receita = ({ nomeDaReceita, fotoDaReceita, ingredientes, passos }) => {
                     </ul>
                 </div>
             </div>
-            <button id="reset-receita" className="reset-btn"><i className="fa-solid fa-arrows-rotate"></i></button>
         </section>
     );
 };

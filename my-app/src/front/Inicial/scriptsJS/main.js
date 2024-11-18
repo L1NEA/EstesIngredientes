@@ -30,7 +30,6 @@ const Main = () => {
       const response = await axios.post("http://localhost:3001/pergunte-ao-gemini", { prompt: promptBusca });
       const completionText = response.data.completion.replace(/```json|```/g, "").trim(); 
       setResultado(JSON.parse(completionText))// Atualiza o resultado com a resposta da API
-      console.log(JSON.parse(completionText)); // Imprime a resposta
     } catch (error) {
       console.error("Erro ao obter resposta:", error);
     }

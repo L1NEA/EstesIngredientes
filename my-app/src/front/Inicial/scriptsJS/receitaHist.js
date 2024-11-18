@@ -1,7 +1,7 @@
 import React from 'react';
 import '../stylesCSS/historico.css';
 
-function Recipe({ name, ingredients, steps }) {
+function ReceitaHist({ name, ingredients, steps }) {
   return (
     <div className="recipe">
       <h4>{name}</h4>
@@ -29,5 +29,5 @@ function Recipe({ name, ingredients, steps }) {
   );
 }
 
-export default Recipe;
+export default ReceitaHist;
 

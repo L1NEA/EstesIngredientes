@@ -60,11 +60,8 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
     model: 'gemini-1.5-flash'
   });
   const { prompt } = req.body; // Acessando o prompt do corpo da requisição POST
-  console.log('API KEY:', GEMINI_API_KEY)
-  console.log('Prompt recebido:', prompt)
   const result = await model.generateContent(prompt);
   const completionText = result.response.text();
-  console.log('Texto de conclusão:', completionText);
   
   // Remover a marcação de código Markdown (caso esteja presente)
   const jsonString = completionText.replace(/```json|```/g, '').trim();
