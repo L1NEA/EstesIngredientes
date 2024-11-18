@@ -50,6 +50,17 @@ label {
     align-items: center;
 }
 
+.radio-container {
+    display: grid;
+    grid-template-columns:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-container input[type="radio"] {
+    accent-color: var(--primary-color); /* Define a cor do botão de rádio */
+}
+
 input[type="text"] {
     width: 100%;
     padding: 10px;
